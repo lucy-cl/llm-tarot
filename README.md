@@ -1,50 +1,213 @@
-# React + TypeScript + Vite
+# CareMind·Tarot
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+一个融合塔罗牌占卜与个人日记的 Web 应用，结合了丰富的动画效果和 AI 智能解读。
 
-Currently, two official plugins are available:
+## ✨ 特性
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🎴 命运之牌占卜
+- 精美的 3D 塔罗牌交互体验
+- 流畅的翻牌动画（使用 GSAP）
+- 多种选择主题（事业、爱情、健康等）
+- AI 智能解读（集成通义千问大模型）
+- 流式响应展示占卜结果
 
-## Expanding the ESLint configuration
+### 📝 智能编辑器
+- 基于 ProseMirror 的富文本编辑器
+- 支持多种文本格式
+- 时间线功能，按日期管理日记
+- 本地存储数据持久化
+- Blob 光标跟随效果
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### 🎨 精致的 UI/UX
+- 现代化的界面设计（使用 shadcn/ui）
+- 丰富的动画效果（GSAP、React Spring）
+- 渐变文字、粒子特效
+- 响应式布局
 
-- Configure the top-level `parserOptions` property like this:
+## 🚀 技术栈
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### 核心框架
+- **React 18** - UI 框架
+- **TypeScript** - 类型安全
+- **Vite** - 构建工具
+
+### UI 组件库
+- **shadcn/ui** - 组件库
+- **Radix UI** - 无障碍组件
+  - `@radix-ui/react-dropdown-menu`
+  - `@radix-ui/react-slot`
+  - `@radix-ui/react-toast`
+  - `@radix-ui/react-tooltip`
+- **Tailwind CSS** - 样式框架
+- **lucide-react** - 图标库
+
+### 编辑器
+- **ProseMirror** - 富文本编辑框架
+  - `prosemirror-state`
+  - `prosemirror-view`
+  - `prosemirror-model`
+  - `prosemirror-commands`
+  - `prosemirror-keymap`
+  - `prosemirror-history`
+  - `prosemirror-schema-basic`
+  - `prosemirror-schema-list`
+- **Remirror** - ProseMirror 封装
+
+### 动画
+- **GSAP** - 高性能动画库
+- **React Spring** - React 动画库
+- **tailwindcss-animate** - Tailwind 动画扩展
+
+### 3D 图形
+- **Three.js** - 3D 图形库
+- **OGL** - 轻量级 WebGL 框架
+
+### 工具库
+- **date-fns** - 日期处理
+- **lodash** - 工具函数
+- **clsx & tailwind-merge** - 类名管理
+- **class-variance-authority** - 组件变体管理
+- **react-hook-form** - 表单管理
+- **react-router-dom** - 路由管理
+
+## 📦 安装
+
+```bash
+# 克隆仓库
+git clone git@github.com:cunyu6666/caremind.git
+
+# 进入项目目录
+cd caremind
+
+# 安装依赖
+npm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 🎯 使用
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### 开发模式
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+npm run dev
 ```
+
+访问 `http://localhost:5173` 查看应用
+
+### 构建生产版本
+
+```bash
+npm run build
+```
+
+### 预览生产构建
+
+```bash
+npm run preview
+```
+
+### 代码检查
+
+```bash
+npm run lint
+```
+
+## 📁 项目结构
+
+```
+caremind/
+├── public/                 # 静态资源
+│   └── fonts/             # 字体文件
+├── src/
+│   ├── components/        # 通用组件
+│   │   ├── 3DTarget/     # 3D 目标组件
+│   │   ├── BlobCursor/   # 光标跟随效果
+│   │   ├── Editor/       # 富文本编辑器
+│   │   ├── GradientText/ # 渐变文字
+│   │   ├── InfiniteScroll/ # 无限滚动
+│   │   ├── Particles/    # 粒子特效
+│   │   ├── Timeline/     # 时间线组件
+│   │   └── ui/           # UI 组件库
+│   ├── data/             # 数据文件
+│   ├── page/             # 页面组件
+│   │   ├── home/         # 首页/编辑器
+│   │   └── tarot/        # 命运之牌占卜
+│   ├── router/           # 路由配置
+│   ├── styles/           # 全局样式
+│   └── utils/            # 工具函数
+├── index.html
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+└── tailwind.config.js
+```
+
+## 🎮 功能说明
+
+### 命运之牌占卜（/）
+1. 选择占卜主题（事业、爱情、健康等）
+2. 点击抽取两张塔罗牌
+3. 系统根据正逆位生成解读
+4. AI 提供详细解读（流式响应）
+
+### 智能编辑器（/edtor）
+1. 查看时间线上的日期
+2. 点击日期切换对应的日记内容
+3. 使用富文本编辑器编辑内容
+4. 内容自动保存到本地存储
+
+## 🔧 配置
+
+### 环境变量
+
+如需配置 AI 服务，请修改相关 API 配置（目前代码中为示例配置）：
+
+```typescript
+// src/page/tarot/index.tsx
+headers: {
+  Authorization: "Bearer YOUR_API_KEY",  // 替换为实际的 API Key
+}
+```
+
+### Tailwind 配置
+
+项目使用 Tailwind CSS，配置文件位于 `tailwind.config.js`
+
+## 📝 开发指南
+
+### 添加新组件
+
+1. 在 `src/components/` 下创建新组件目录
+2. 创建 `index.tsx` 文件
+3. 如需样式，创建 `index.css` 文件
+
+### 添加新页面
+
+1. 在 `src/page/` 下创建新页面目录
+2. 在 `src/router/index.tsx` 中添加路由配置
+
+### 自定义编辑器
+
+编辑器基于 ProseMirror 构建，可在 `src/components/Editor/` 中进行自定义：
+- 修改 `mockSchema.ts` 添加新的节点/标记
+- 更新 `components/Toolbar/` 添加新的格式按钮
+
+## 🎨 自定义字体
+
+项目使用以下字体：
+- **Lora** - 正文
+- **Italianno** - 装饰性字体
+- **Island Moments** - 手写字体
+
+字体文件位于 `public/fonts/` 目录
+
+## 📄 许可证
+
+MIT License
+
+## 🤝 贡献
+
+欢迎提交 Issue 和 Pull Request！
+
+---
+
+![CareMind 项目展示](https://img.alicdn.com/imgextra/i3/O1CN01H1)
