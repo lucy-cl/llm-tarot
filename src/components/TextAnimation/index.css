@@ -1,0 +1,43 @@
+/* TextAnimator.css */
+.text-container {
+  display: inline-block;
+  font-family: monospace;
+  /* 保证等宽字符 */
+  white-space: pre-wrap;
+  transition: scroll-behavior 0.3s ease;
+  scroll-behavior: smooth;
+  padding: 24px;
+
+  .char {
+    opacity: 0;
+    display: inline-block;
+    transition-property: opacity;
+    white-space: pre-wrap;
+    vertical-align: top;
+  }
+
+  .sign {
+    opacity: 0;
+    transition-property: opacity;
+    font-family: "Italianno", serif;
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 1;
+    text-align: right;
+    margin-top: 4px;
+    position: relative;
+
+    /* &::after {
+      position: absolute;
+      content: "";
+      right: 0;
+      top: 0;
+      width: 54px;
+      height: 64px;
+      background-image: url('../../assets/tarot/pen.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    } */
+  }
+}
+

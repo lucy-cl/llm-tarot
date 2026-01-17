@@ -1,0 +1,124 @@
+.editor-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  border: none;
+  border-radius: 0;
+}
+
+.editor-content {
+  background-color: #FEF6F3;
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+
+  /* 滚动条样式 */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+  }
+
+  /* hover 时显示滚动条 */
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(24, 24, 27, 0.3);
+  }
+
+  /* 正在滚动时显示滚动条 */
+  &:active::-webkit-scrollbar-thumb {
+    background-color: rgba(24, 24, 27, 0.9);
+  }
+}
+
+/* 确保滚动时也显示滚动条 */
+.editor-content.scrolling::-webkit-scrollbar-thumb {
+  background-color: rgba(24, 24, 27, 0.5);
+}
+
+.ProseMirror {
+  height: 100%;
+  min-height: 0;
+  padding: 24px 32px;
+  outline: none;
+  font-size: 16px;
+  line-height: 1.5;
+  max-width: 880px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.ProseMirror h1 {
+  font-size: 32px !important;
+  margin: 24px 0;
+  font-weight: 600 !important;
+  line-height: 1.2;
+}
+
+.ProseMirror h2 {
+  font-size: 28px !important;
+  margin: 20px 0;
+  font-weight: 600 !important;
+  line-height: 1.2;
+}
+
+.ProseMirror h3 {
+  font-size: 24px !important;
+  margin: 16px 0;
+  font-weight: 600 !important;
+  line-height: 1.2;
+}
+
+.ProseMirror h1:first-child,
+.ProseMirror h2:first-child,
+.ProseMirror h3:first-child {
+  margin-top: 0;
+}
+
+.ProseMirror h1:last-child,
+.ProseMirror h2:last-child,
+.ProseMirror h3:last-child {
+  margin-bottom: 0;
+}
+
+.ProseMirror p {
+  margin: 16px 0;
+  min-height: 1.5em;
+}
+
+.ProseMirror p:first-child {
+  margin-top: 0;
+}
+
+.ProseMirror p:last-child {
+  margin-bottom: 0;
+}
+
+.ProseMirror em,
+.ProseMirror i {
+  font-style: italic !important;
+}
+
+.ProseMirror strong,
+.ProseMirror b {
+  font-weight: bold !important;
+}
+
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.font-noto-serif {
+  font-family: 'Noto Serif SC', serif;
+}
+
+.ProseMirror-focused {
+  outline: none;
+} 

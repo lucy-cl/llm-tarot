@@ -1,0 +1,490 @@
+:root {
+    --bg: #111316;
+    --ar: 20/30;
+    --gutter: 8%;
+    --primary-color: #DB9850;
+    --o: 0;
+    --p: 100%;
+    --h: 50%;
+    --r: 0;
+    --tarot-card-opacity: 1;
+    --x: 0;
+    --y: 0;
+    --z: 0;
+    --tarot-card-width: 256px;
+    --tarot-card-height: 480px;
+    --tarot-opacity: 0;
+    --box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    --x-2: 0;
+    --y-2: 0;
+    --z-2: 0;
+    --tarot-card-2-width: 240px;
+    --tarot-card-2-height: 450px;
+    --tarot-opacity-2: 0;
+}
+
+body {
+    overflow: hidden;
+}
+.tarot-container {
+    color: white;
+    width: 100vw;
+    height: 100vh;
+    font-family: "Italianno", serif;
+
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        height: 68px;
+        width: 100%;
+
+        display: flex;
+        justify-content: space-between;
+        align-self: center;
+        padding: 0 20px;
+
+        .left {
+            cursor: pointer;
+
+            .logo {
+                width: 20px;
+                height: 20px;
+            }
+
+        }
+
+        form {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            input {
+                color: #000000;
+            }
+        }
+    }
+
+    main {
+        /* background-image: url("https://img.alicdn.com/imgextra/i1/O1CN01vsCiYg1Dbg6kUIHwH_!!6000000000235-2-tps-3024-1964.png"); */
+        /* background-image: url("../../../public/bg-card.png"); */
+        background-color: #0E0E0E;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .section-info {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+
+        .main-title {
+            transition: transform cubic-bezier(0.23, 1, 0.32, 1) .7s;
+            transform-origin: top;
+
+            .text-h1 {
+                font-size: 128px;
+                line-height: 1.2;
+                font-weight: 700;
+                font-family: "Italianno", serif;
+
+                &.start {
+                    transform: translateY(calc(-14vh + 35px)) scale(.21);
+                }
+            }
+
+            .text-nuances {
+                &.start {
+                    display: none;
+                }
+            }
+        }
+
+        .intro__button {
+            opacity: 1;
+            transform: none;
+            transition-delay: 4s;
+            transition: all cubic-bezier(0.23, 1, 0.32, 1) 1s;
+
+            .intro__button__inner {
+                animation: bounceZoom 2s linear infinite;
+            }
+
+            .button {
+                position: relative;
+                overflow: hidden;
+
+                .button__base {
+                    opacity: 1;
+                    transition: transform .45s cubic-bezier(.23, 1, .32, 1), opacity .3s cubic-bezier(.23, 1, .32, 1);
+                }
+            }
+
+            .bgGradient {
+                background: linear-gradient(90deg, var(--primary-color), #886D62 20%, var(--primary-color) 40%, #886D62 60%, var(--primary-color) 80%, #886D62);
+                background-size: 500% 100%;
+                border-radius: 1000px;
+            }
+        }
+
+        .text-buttonstart {
+            font-size: 16px;
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        .items-center {
+            transition: opacity .5s;
+
+            &.start {
+                opacity: 0;
+            }
+        }
+    }
+
+    .section-tarot-grid {
+        position: absolute;
+        top: 0;
+        width: 100vw;
+        height: 200vh;
+        opacity: 0;
+        /* transition: opacity 1s, transform 1s; */
+        transform-origin: top center;
+        /* transform: scale(1.15); */
+
+        &::after, &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 440px;
+            height: 100%;
+            background: linear-gradient(to right,#0E0E0E, rgba(0,0,0,0));
+            backdrop-filter: blur(0px);
+        }
+
+        &::before {
+            left: inherit;
+            right: 0;
+            background: linear-gradient(to left, #0E0E0E, rgba(0,0,0,0));
+            backdrop-filter: blur(0px);
+        }
+
+        &.start {
+            opacity: 1;
+        }
+
+        &.detail {
+            /* transform: scale(.8); */
+            /* opacity: 0.5; */
+        }
+
+        .tarot-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+            transform-origin: center top;
+
+            .tarot-col {
+                flex: 0 0 20%;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(circle, rgba(0, 0, 0, 0), #050606);
+                pointer-events: none;
+            }
+
+            .tarot-card {
+                width: var(--tarot-card-width);
+                height: var(--tarot-card-height);
+                background-image: url("https://img.alicdn.com/imgextra/i2/O1CN01U8lzZ01wubBaOLh5R_!!6000000006368-2-tps-1280-2400.png");
+                background-size: 100% 100%;
+                opacity: var(--tarot-card-opacity);
+            }
+        }
+    }
+
+    .section-tarot-detail {
+        position: absolute;
+        top: var(--y);
+        left: var(--x);
+        opacity: var(--tarot-opacity);
+        transition: opacity .5s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        perspective: 1200px;
+        /* transform: scale(1) translate3d(0, 0, 0.1px); */
+        order: 4;
+        /* transform-origin: center center; */
+
+        .tarot-card-container {
+            display: grid;
+            grid-area: 1/1;
+            width: var(--tarot-card-width);
+            height: var(--tarot-card-height);
+            aspect-ratio: 20/30;
+
+            --scale: 1;
+            transform: translate3d(0, 0, 0.1px) scale(var(--scale)) rotateY(var(--r)) rotateZ(var(--z));
+            transform-style: preserve-3d;
+            pointer-events: auto;
+        }
+
+        .tarot-card-fg,
+        .tarot-card {
+            grid-area: 1/1;
+            background-size: 100% 100%;
+            background-image: url("https://img.alicdn.com/imgextra/i2/O1CN01U8lzZ01wubBaOLh5R_!!6000000006368-2-tps-1280-2400.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            display: grid;
+            backface-visibility: visible;
+            transform: translateZ(1px);
+            transform-style: preserve-3d;
+
+            border-radius: 4px;
+
+            box-shadow: var(--box-shadow);
+        }
+
+        .tarot-card-fg::after,
+        .tarot-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(-70deg,
+                    transparent 40%,
+                    rgba(255, 255, 255, 0.5) 40.5%,
+                    transparent);
+            background-size: 200% 200%;
+            background-position: var(--p) var(--p);
+            z-index: 5;
+            opacity: calc(var(--o) + 0.5);
+            pointer-events: none;
+            border-radius: 16px;
+        }
+
+        .tarot-card-fg {
+            transform: rotateY(180deg) translateZ(1px);
+        }
+    }
+
+    .section-tarot-detail-second {
+        position: absolute;
+        top: var(--y-2);
+        left: var(--x-2);
+        opacity: var(--tarot-opacity-2);
+        transition: opacity .5s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        perspective: 1200px;
+        /* transform: scale(1) translate3d(0, 0, 0.1px); */
+        order: 4;
+
+        .tarot-card-container {
+            display: grid;
+            grid-area: 1/1;
+            width: var(--tarot-card-2-width);
+            height: var(--tarot-card-2-height);
+            aspect-ratio: 20/30;
+
+            --scale: 1;
+            transform: translate3d(0, 0, 0.1px) scale(var(--scale)) rotateY(var(--r)) rotateZ(var(--z-2));
+            transform-style: preserve-3d;
+            pointer-events: auto;
+        }
+
+        .tarot-card-fg,
+        .tarot-card {
+            grid-area: 1/1;
+            background-size: 100% 100%;
+            background-image: url("https://img.alicdn.com/imgextra/i2/O1CN01U8lzZ01wubBaOLh5R_!!6000000006368-2-tps-1280-2400.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            display: grid;
+            backface-visibility: visible;
+            transform: translateZ(1px);
+            transform-style: preserve-3d;
+
+            border-radius: 4px;
+
+            box-shadow: var(--box-shadow);
+        }
+
+        .tarot-card-fg::after,
+        .tarot-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(-70deg,
+                    transparent 40%,
+                    rgba(255, 255, 255, 0.5) 40.5%,
+                    transparent);
+            background-size: 200% 200%;
+            background-position: var(--p) var(--p);
+            z-index: 5;
+            opacity: calc(var(--o) + 0.5);
+            pointer-events: none;
+            border-radius: 16px;
+        }
+
+        .tarot-card-fg {
+            transform: rotateY(180deg) translateZ(1px);
+        }
+    }
+
+    .section-tarot-drawer {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(2deg);
+        width: 40vw;
+        height: 60vh;
+        background: linear-gradient(to left, #1D1D1D, #121212);
+        order: 1;
+        border-radius: 8px;
+        opacity: 0;
+
+        .text-container {
+          width: 100%;
+          height: 100%;
+        }
+
+        .pen {
+            opacity: 0;
+            position: absolute;
+            right: -20px;
+            bottom: 26px;
+            transform: skew(351deg, 357deg) rotate(7deg) scale(0.81);
+        }
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+        width: 100vw;
+        padding-bottom: 36px;
+        text-align: center;
+        background: linear-gradient(to top, #050606, rgba(0, 0, 0, 0));
+        height: 228px;
+
+        display: flex;
+        align-items: end;
+        justify-content: center;
+        pointer-events: none;
+
+        .tarot-choose {
+            /* transform: translateX(-50%); */
+            color: #A99A85;
+            font-size: 20px;
+            line-height: 34px;
+            opacity: 1;
+            transition: all .5s ease-in-out;
+
+            .tarot-select {
+                margin-bottom: 12px;
+
+                select {
+                    background: transparent;
+                    margin: 0 16px 0 8px;
+                    pointer-events: auto;
+
+                    option {
+                        background-color: #050606;
+                        color: var(--primary-color);
+                    }
+                }
+
+                &.detail {
+                    opacity: 0;
+                }
+            }
+
+            .tarot-start {
+                position: relative;
+                font-family: Italianno;
+                width: 230px;
+                height: 42px;
+                border-radius: 99px;
+                outline: 1px solid #D49E65;
+                outline-offset: -4px;
+                background: linear-gradient(to left, #000000 0%, #11100E 50%, #574027 100%);
+                background-size: 200% 100%;
+                background-position: 100% 0;
+                transition: background-position .5s ease-in-out;
+                pointer-events: auto;
+
+                &::after,
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 12px;
+                    transform: translateY(-50%);
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 50%;
+                    background-color: var(--primary-color);
+                }
+
+                &::before {
+                    left: inherit;
+                    right: 12px;
+                }
+
+                &:hover {
+                    background-position: left center;
+                }
+            }
+        }
+    }
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 0;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
+@keyframes bounceZoom {
+    0% {
+        transform: scale(1);
+        opacity: .7;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: .7;
+    }
+}
